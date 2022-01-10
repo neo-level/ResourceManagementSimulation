@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -764,12 +764,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e871245188e237b4ba88365cff8a1671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvailableColors:
+  availableColors:
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.16898394, b: 1, a: 1}
-  - {r: 0.26900482, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.91166264, b: 0, a: 1}
-  ColorButtonPrefab: {fileID: 645939441953464998, guid: 550a8281bf235dd4e8407162745631ba, type: 3}
+  - {r: 0, g: 0.07073355, b: 1, a: 1}
+  - {r: 0, g: 0.7264151, b: 0.10219213, a: 1}
+  - {r: 0.9866247, g: 1, b: 0, a: 1}
+  colorButtonPrefab: {fileID: 645939441953464998, guid: 550a8281bf235dd4e8407162745631ba, type: 3}
 --- !u!114 &991742395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,7 +791,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1583,4 +1583,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5fdfdf1c56785947bd9d5830598e09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorPicker: {fileID: 991742394}
+  colorPicker: {fileID: 991742394}

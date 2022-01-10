@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c73ebf095b3f9a4e8ed3d2eb5aa367a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventorySpace: 10
-  Item: {fileID: 11400000, guid: e33426cca62239f4f9d376e16e5ecb0c, type: 2}
+  inventorySpace: -1
+  item: {fileID: 11400000, guid: e33426cca62239f4f9d376e16e5ecb0c, type: 2}
+  productionSpeed: 0.5
 --- !u!65 &5381548483770276829
 BoxCollider:
   m_ObjectHideFlags: 0

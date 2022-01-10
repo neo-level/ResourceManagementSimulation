@@ -3,7 +3,8 @@ guid: e871245188e237b4ba88365cff8a1671
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - colorButtonPrefab: {fileID: 645939441953464998, guid: 550a8281bf235dd4e8407162745631ba, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
