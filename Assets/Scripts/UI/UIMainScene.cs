@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Helpers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -72,6 +73,14 @@ namespace UI
                 MCurrentContent = content;
                 infoPopup.name.text = content.GetName();
             }
+        }
+
+        /// <summary>
+        /// Loads the menu scene.
+        /// </summary>
+        public void LoadMenu()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
