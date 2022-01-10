@@ -1,29 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoPopup : MonoBehaviour
+namespace UI
 {
-    public Text Name;
-    public Text Data;
-    public RectTransform ContentTransform;
-
-    public ContentEntry EntryPrefab;
-
-    public void ClearContent()
+    public class InfoPopup : MonoBehaviour
     {
-        foreach (Transform child in ContentTransform)
+        public new Text name;
+        public Text data;
+        public RectTransform contentTransform;
+
+        public ContentEntry entryPrefab;
+
+        public void ClearContent()
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in contentTransform)
+            {
+                Destroy(child.gameObject);
+            }
         }
-    }
     
-    public void AddToContent(int count, Sprite Icone)
-    {
-        var newEntry = Instantiate(EntryPrefab, ContentTransform);
+        public void AddToContent(int count, Sprite coneImage)
+        {
+            var newEntry = Instantiate(entryPrefab, contentTransform);
 
-        newEntry.Count.text = count.ToString();
-        newEntry.Icone.sprite = Icone;
+            newEntry.count.text = count.ToString();
+            newEntry.coneImage.sprite = coneImage;
+        }
     }
 }

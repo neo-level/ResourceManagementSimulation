@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Helpers;
 using UnityEngine;
 
 /// <summary>
@@ -8,33 +6,30 @@ using UnityEngine;
 /// </summary>
 public class ResourcePile : Building
 {
-    public ResourceItem Item;
+    public ResourceItem item;
 
-    public float ProductionSpeed = 0.5f;
+    public float productionSpeed = 0.5f;
 
-    private float m_CurrentProduction = 0.0f;
+    private float _mCurrentProduction;
 
     private void Update()
     {
-        if (m_CurrentProduction > 1.0f)
+        if (_mCurrentProduction > 1.0f)
         {
-            int amountToAdd = Mathf.FloorToInt(m_CurrentProduction);
-            int leftOver = AddItem(Item.Id, amountToAdd);
+            int amountToAdd = Mathf.FloorToInt(_mCurrentProduction);
+            int leftOver = AddItem(item.id, amountToAdd);
 
-            m_CurrentProduction = m_CurrentProduction - amountToAdd + leftOver;
+            _mCurrentProduction -= amountToAdd + leftOver;
         }
-        
-        if (m_CurrentProduction < 1.0f)
+
+        if (_mCurrentProduction < 1.0f)
         {
-            m_CurrentProduction += ProductionSpeed * Time.deltaTime;
+            _mCurrentProduction += productionSpeed * Time.deltaTime;
         }
     }
 
     public override string GetData()
     {
-        return $"Producing at the speed of {ProductionSpeed}/s";
-        
+        return $"Producing at the speed of {productionSpeed}/s";
     }
-    
-    
 }

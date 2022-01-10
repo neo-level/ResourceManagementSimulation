@@ -1,50 +1,52 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ColorPicker : MonoBehaviour
+namespace Helpers
 {
-    public Color[] AvailableColors;
-    public Button ColorButtonPrefab;
-    
-    public Color SelectedColor { get; private set; }
-    public System.Action<Color> onColorChanged;
-
-    List<Button> m_ColorButtons = new List<Button>();
-    
-    // Start is called before the first frame update
-    public void Init()
+    public class ColorPicker : MonoBehaviour
     {
-        foreach (var color in AvailableColors)
+        public Color[] availableColors;
+        public Button colorButtonPrefab;
+
+        public Color SelectedColor { get; private set; }
+        public System.Action<Color> OnColorChanged;
+
+        List<Button> _mColorButtons = new List<Button>();
+
+        // Start is called before the first frame update
+        public void Init()
         {
-            var newButton = Instantiate(ColorButtonPrefab, transform);
-            newButton.GetComponent<Image>().color = color;
-            
-            newButton.onClick.AddListener(() =>
+            foreach (var color in availableColors)
             {
-                SelectedColor = color;
-                foreach (var button in m_ColorButtons)
+                var newButton = Instantiate(colorButtonPrefab, transform);
+                newButton.GetComponent<Image>().color = color;
+
+                newButton.onClick.AddListener(() =>
                 {
-                    button.interactable = true;
-                }
+                    SelectedColor = color;
+                    foreach (var button in _mColorButtons)
+                    {
+                        button.interactable = true;
+                    }
 
-                newButton.interactable = false;
-                
-                onColorChanged.Invoke(SelectedColor);
-            });
-            
-            m_ColorButtons.Add(newButton);
+                    newButton.interactable = false;
+
+                    OnColorChanged.Invoke(SelectedColor);
+                });
+
+                _mColorButtons.Add(newButton);
+            }
         }
-    }
 
-    public void SelectColor(Color color)
-    {
-        for (int i = 0; i < AvailableColors.Length; ++i)
+        public void SelectColor(Color color)
         {
-            if (AvailableColors[i] == color)
+            for (int i = 0; i < availableColors.Length; ++i)
             {
-                m_ColorButtons[i].onClick.Invoke();
+                if (availableColors[i] == color)
+                {
+                    _mColorButtons[i].onClick.Invoke();
+                }
             }
         }
     }

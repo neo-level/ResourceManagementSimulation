@@ -1,27 +1,28 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ResourcesDatabase", menuName = "Tutorial/Resources Database")]
-public class ResourceDatabase : ScriptableObject
+namespace Helpers
 {
-    public List<ResourceItem> ResourceTypes = new List<ResourceItem>();
-
-    private Dictionary<string, ResourceItem> m_Database;
-    
-    public void Init()
+    [CreateAssetMenu(fileName = "ResourcesDatabase", menuName = "Tutorial/Resources Database")]
+    public class ResourceDatabase : ScriptableObject
     {
-        m_Database = new Dictionary<string, ResourceItem>();
-        foreach (var resourceItem in ResourceTypes)
+        public List<ResourceItem> resourceTypes = new List<ResourceItem>();
+
+        private Dictionary<string, ResourceItem> _mDatabase;
+
+        public void Init()
         {
-            m_Database.Add(resourceItem.Id, resourceItem);
+            _mDatabase = new Dictionary<string, ResourceItem>();
+            foreach (var resourceItem in resourceTypes)
+            {
+                _mDatabase.Add(resourceItem.id, resourceItem);
+            }
         }
-    }
 
-    public ResourceItem GetItem(string uniqueId)
-    {
-        m_Database.TryGetValue(uniqueId, out ResourceItem type);
-        return type;
+        public ResourceItem GetItem(string uniqueId)
+        {
+            _mDatabase.TryGetValue(uniqueId, out var type);
+            return type;
+        }
     }
 }

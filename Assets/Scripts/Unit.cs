@@ -1,6 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using Helpers;
+using UI;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,41 +11,34 @@ using UnityEngine.AI;
 public abstract class Unit : MonoBehaviour,
     UIMainScene.IUIInfoContent
 {
-    public float Speed = 3;
+    public float speed = 3;
 
-    protected NavMeshAgent m_Agent;
-    protected Building m_Target;
+    protected NavMeshAgent MAgent;
+    protected Building MTarget;
 
     protected void Awake()
     {
-        m_Agent = GetComponent<NavMeshAgent>();
-        m_Agent.speed = Speed;
-        m_Agent.acceleration = 999;
-        m_Agent.angularSpeed = 999;
-    }
-
-    private void Start()
-    {
-
+        MAgent = GetComponent<NavMeshAgent>();
+        MAgent.speed = speed;
+        MAgent.acceleration = 999;
+        MAgent.angularSpeed = 999;
     }
 
     void SetColor(Color c)
     {
         var colorHandler = GetComponentInChildren<ColorHandler>();
         if (colorHandler != null)
-        {
             colorHandler.SetColor(c);
-        }
     }
 
     private void Update()
     {
-        if (m_Target != null)
+        if (MTarget != null)
         {
-            float distance = Vector3.Distance(m_Target.transform.position, transform.position);
+            float distance = Vector3.Distance(MTarget.transform.position, transform.position);
             if (distance < 2.0f)
             {
-                m_Agent.isStopped = true;
+                MAgent.isStopped = true;
                 BuildingInRange();
             }
         }
@@ -53,21 +46,21 @@ public abstract class Unit : MonoBehaviour,
 
     public virtual void GoTo(Building target)
     {
-        m_Target = target;
+        MTarget = target;
 
-        if (m_Target != null)
+        if (MTarget != null)
         {
-            m_Agent.SetDestination(m_Target.transform.position);
-            m_Agent.isStopped = false;
+            MAgent.SetDestination(MTarget.transform.position);
+            MAgent.isStopped = false;
         }
     }
 
     public virtual void GoTo(Vector3 position)
     {
         //we don't have a target anymore if we order to go to a random point.
-        m_Target = null;
-        m_Agent.SetDestination(position);
-        m_Agent.isStopped = false;
+        MTarget = null;
+        MAgent.SetDestination(position);
+        MAgent.isStopped = false;
     }
 
 
@@ -92,6 +85,5 @@ public abstract class Unit : MonoBehaviour,
 
     public virtual void GetContent(ref List<Building.InventoryEntry> content)
     {
-        
     }
 }

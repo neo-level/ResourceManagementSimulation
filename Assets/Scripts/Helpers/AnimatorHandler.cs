@@ -1,26 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimatorHandler : MonoBehaviour
+namespace Helpers
 {
-    private Animator m_Animator;
-    private NavMeshAgent m_Agent;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class AnimatorHandler : MonoBehaviour
     {
-        m_Agent = GetComponentInParent<NavMeshAgent>();
-        m_Animator = GetComponentInChildren<Animator>();
-    }
+        private Animator _mAnimator;
+        private NavMeshAgent _mAgent;
+        private static readonly int Speed = Animator.StringToHash("Speed");
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (m_Agent != null && m_Animator != null)
+        // Start is called before the first frame update
+        private void Start()
         {
-            m_Animator.SetFloat("Speed", m_Agent.velocity.magnitude / m_Agent.speed);
+            _mAgent = GetComponentInParent<NavMeshAgent>();
+            _mAnimator = GetComponentInChildren<Animator>();
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (_mAgent != null && _mAnimator != null)
+            {
+                _mAnimator.SetFloat(Speed, _mAgent.velocity.magnitude / _mAgent.speed);
+            }
         }
     }
 }
